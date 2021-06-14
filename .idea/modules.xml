@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/file_view_pager.iml" filepath="$PROJECT_DIR$/file_view_pager.iml" />
+      <module fileurl="file://$PROJECT_DIR$/android/file_view_pager_android.iml" filepath="$PROJECT_DIR$/android/file_view_pager_android.iml" />
+      <module fileurl="file://$PROJECT_DIR$/example/android/file_view_pager_example_android.iml" filepath="$PROJECT_DIR$/example/android/file_view_pager_example_android.iml" />
+    </modules>
+  </component>
+</project>
