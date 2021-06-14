@@ -1,6 +1,6 @@
 # file_view_pager
 
-A new flutter plugin project.
+A plugin flutter display drive file (doc, xlsx, pdf) and images (png, jpg) in a pager, and can download each item.
 
 ## Getting Started
 
