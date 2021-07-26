@@ -9,7 +9,7 @@ class PageViewAttachment extends StatefulWidget {
   final Function(int position) onPageChanged;
 
   PageViewAttachment(
-      {this.listAttachment, this.initPosition, this.onPageChanged});
+      {required this.listAttachment, required this.initPosition, required this.onPageChanged});
 
   @override
   _PageViewAttachmentState createState() => _PageViewAttachmentState();
@@ -17,7 +17,7 @@ class PageViewAttachment extends StatefulWidget {
 
 class _PageViewAttachmentState extends State<PageViewAttachment> {
   bool _isLock = false;
-  PageController _pageController;
+  late PageController _pageController;
 
   @override
   void initState() {
@@ -94,7 +94,7 @@ class PageItem extends StatefulWidget {
   final String url;
   final Function(PhotoViewScaleState scaleState) callback;
 
-  const PageItem({Key key, @required this.url, @required this.callback})
+  const PageItem({Key? key, required this.url, required this.callback})
       : super(key: key);
 
   @override
@@ -103,7 +103,7 @@ class PageItem extends StatefulWidget {
 
 class _PageItemState extends State<PageItem>
     with AutomaticKeepAliveClientMixin<PageItem> {
-  InAppWebViewController webViewController;
+  late InAppWebViewController webViewController;
   InAppWebViewGroupOptions options = InAppWebViewGroupOptions(
       crossPlatform: InAppWebViewOptions(
         useShouldOverrideUrlLoading: true,
@@ -162,8 +162,8 @@ class _PageItemState extends State<PageItem>
         print(consoleMessage);
       },
       onLoadStop: (controller, urlLoad) async {
-        String title = await controller.getTitle();
-        if (title.isNullOrEmpty) {
+        String title = (await controller.getTitle()) ?? "";
+        if (title.isEmpty) {
           controller.loadUrl(urlRequest: URLRequest(url: Uri.parse(url)));
         }
         // if (controller.getTitle().)

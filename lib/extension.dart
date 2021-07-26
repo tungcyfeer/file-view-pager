@@ -12,8 +12,4 @@ extension CheckSuffixUrl on String {
   get fileName {
     return RegExp("([^\\\/]+)\$").stringMatch(this) ?? "";
   }
-
-  get isNullOrEmpty {
-    return this == null || this.isEmpty;
-}
 }
