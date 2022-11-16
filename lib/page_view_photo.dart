@@ -9,7 +9,9 @@ class PageViewAttachment extends StatefulWidget {
   final Function(int position) onPageChanged;
 
   PageViewAttachment(
-      {required this.listAttachment, required this.initPosition, required this.onPageChanged});
+      {required this.listAttachment,
+      required this.initPosition,
+      required this.onPageChanged});
 
   @override
   _PageViewAttachmentState createState() => _PageViewAttachmentState();
@@ -83,9 +85,7 @@ class _PageViewAttachmentState extends State<PageViewAttachment> {
       //     ? false
       //     : true;
 
-      _isLock = (scaleState == PhotoViewScaleState.zoomedIn)
-          ? true
-          : false;
+      _isLock = (scaleState == PhotoViewScaleState.zoomedIn) ? true : false;
     });
   }
 }
@@ -127,27 +127,17 @@ class _PageItemState extends State<PageItem>
           minScale: PhotoViewComputedScale.contained,
           initialScale: PhotoViewComputedScale.contained * 0.9,
           scaleStateChangedCallback: widget.callback);
-    } else {
+    }
+    if (widget.url.isFileDriver) {
       return getWebViewInApp(
           "https://docs.google.com/gview?embedded=true&url=" + widget.url);
-      // return WebView(
-      //   debuggingEnabled: true,
-      //   initialUrl:
-      //       "https://docs.google.com/gview?embedded=true&url=" + widget.url,
-      //   onWebViewCreated: (controller) async {
-      //     String title = await controller.getTitle();
-      //     if (title.isEmpty) {
-      //       controller.loadUrl("https://docs.google.com/gview?embedded=true&url=" + widget.url);
-      //     }
-      //   },
-      //   userAgent: 'Mozilla/5.0 (Linux; <Android Version>; <Build Tag etc.>) AppleWebKit/<WebKit Rev> (KHTML, like Gecko) Chrome/<Chrome Rev> Mobile Safari/<WebKit Rev>',
-      // );
     }
+
+    return getOtherFilePage(widget.url);
   }
 
   Widget getWebViewInApp(String url) {
     return InAppWebView(
-
       initialUrlRequest: URLRequest(url: Uri.parse(url)),
       initialOptions: options,
       onWebViewCreated: (controller) {
@@ -172,6 +162,35 @@ class _PageItemState extends State<PageItem>
         // await webViewController.evaluateJavascript(source: "function() { " +
         // "document.getElementsByClassName('ndfHFb-c4YZDc-GSQQnc-LgbsSe ndfHFb-c4YZDc-to915-LgbsSe VIpgJd-TzA9Ye-eEGnhe ndfHFb-c4YZDc-LgbsSe')[0].style.display='none'; })()");
       },
+    );
+  }
+
+  Widget getOtherFilePage(String url) {
+    return Container(
+      alignment: Alignment.center,
+      child: Center(
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.center,
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Icon(
+              Icons.file_copy,
+              color: Colors.white,
+              size: 60,
+            ),
+            SizedBox(
+              height: 10,
+            ),
+            Text(
+              url.extension.toUpperCase(),
+              style: TextStyle(
+                  color: Colors.white,
+                  fontWeight: FontWeight.w600,
+                  fontSize: 20),
+            )
+          ],
+        ),
+      ),
     );
   }
 

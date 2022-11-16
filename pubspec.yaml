@@ -1,6 +1,6 @@
 name: file_view_pager
 description: A plugin flutter display drive file (doc, xlsx, pdf) and images (png, jpg) in a pager, and can download each item.
-version: 1.0.0
+version: 2.0.0
 repository: https://github.com/tungcyfeer/file-view-pager
 issue_tracker: https://github.com/tungcyfeer/file-view-pager/issues
 
@@ -12,7 +12,7 @@ dependencies:
   flutter:
     sdk: flutter
   photo_view: ^0.13.0
-  flutter_inappwebview: ^5.3.2
+  flutter_inappwebview: ^5.7.1
 
 dev_dependencies:
   flutter_test:
