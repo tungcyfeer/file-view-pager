@@ -9,7 +9,7 @@ enum DownloadState { IDLE, LOADING}
 class ViewAttachmentsBloc {
   DataAttachments initDataViewAttachments;
 
-  ViewAttachmentsBloc({this.initDataViewAttachments}) {
+  ViewAttachmentsBloc({required this.initDataViewAttachments}) {
     currentPosition = initDataViewAttachments.initPosition;
   }
 

@@ -5,5 +5,5 @@ class DataAttachments {
   int initPosition;
   String contentSuccess;
 
-  DataAttachments({@required this.listAttachment, @required this.initPosition, @required this.contentSuccess});
+  DataAttachments({required this.listAttachment, required this.initPosition, this.contentSuccess = "Tải tệp thành công"});
 }

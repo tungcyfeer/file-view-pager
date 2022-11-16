@@ -2,7 +2,6 @@ import 'dart:async';
 import 'dart:io';
 
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 
 import 'data_attachments.dart';
 import 'page_view_photo.dart';
@@ -11,14 +10,14 @@ import 'view_attachment_bloc.dart';
 class ViewAttachmentsPage extends StatefulWidget {
   final DataAttachments dataAttachments;
 
-  ViewAttachmentsPage({this.dataAttachments});
+  ViewAttachmentsPage({required this.dataAttachments});
 
   @override
   _ViewAttachmentsPageState createState() => _ViewAttachmentsPageState();
 }
 
 class _ViewAttachmentsPageState extends State<ViewAttachmentsPage> {
-  ViewAttachmentsBloc bloc;
+  late ViewAttachmentsBloc bloc;
 
   @override
   void initState() {
@@ -67,7 +66,7 @@ class _ViewAttachmentsPageState extends State<ViewAttachmentsPage> {
             child: StreamBuilder<DownloadState>(
                 stream: bloc.downloadStream,
                 builder: (context, AsyncSnapshot<DownloadState> snapshot) {
-                  return snapshot?.data == DownloadState.LOADING
+                  return snapshot.data == DownloadState.LOADING
                       ? Container(
                           width: 34,
                           height: 34,
